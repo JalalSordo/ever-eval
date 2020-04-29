@@ -1,0 +1,87 @@
+<div id="wrapper">
+    <div class="normalheader transition animated fadeIn small-header">
+      <div class="hpanel">
+        <div class="panel-body">
+          <h2 class="font-light m-b-xs">
+            Emails
+          </h2>
+          <small>Emails list.</small>
+        </div>
+      </div>
+      <div class="content animate-panel">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="hpanel">
+              <div class="panel-heading" style="margin-bottom: 10px;">
+                Emails list
+              </div>
+              <div class="panel-body">
+                <div class="row pull-right" style="margin-bottom: 10px;">
+                  <div class="col-md-4">
+                    <div id="nestable-menu">
+                      <table>
+                        <td class="inline">
+                          <button class="btn btn-success " data-toggle="modal" data-target="#addEmail" type="button"
+                            style="margin-right: 5px;">
+                            <i class="fa fa-plus"></i> Add
+                          </button>
+                        </td>
+                      </table>
+  
+                    </div>
+                  </div>
+                </div>
+  
+                <table id="example2" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                  class="table table-condensed table-hover" cellspacing="1" cellpadding="1">
+                  <thead>
+                    <tr>
+                      <th>Subject</th>
+                      <th>MessageText</th>
+                      <th class="fit"></th>
+                      <th class="fit"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let email of emails">
+                      <td>
+                        {{ email.subject }}
+                      </td>
+                      <td>
+                        {{ email.messageText }}
+                      </td>
+                      <td class="fit">
+                        <button class="btn btn-info btn-xm" type="button" data-toggle="modal" data-target="#editModal"
+                          (click)="open(email)">
+                          <i class="fa fa-pencil"></i> Edit
+                        </button>
+                      </td>
+                      <td class="fit">
+                        <button class="btn btn-danger btn-xm" type="button" [swal]="deleteSwal">
+                          <swal #deleteSwal title="Delete?" text="This cannot be undone" confirmButtonColor="#DD6B55"
+                            confirmButtonText="Yes, delete" cancelButtonText="No, cancel" type="warning"
+                            [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteEmail(email)">
+                          </swal>
+                          <swal #deletedSwal title="Deleted" text="Email has been deleted" type="success">
+                          </swal>
+                          <i class="fa fa-trash"></i> Delete
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+  
+          <footer class="footer">
+            <span class="pull-right">
+              EverEval
+            </span>
+            Everis 2019
+          </footer>
+        </div>
+      </div>
+      <app-add-email [emails]="emails"></app-add-email>
+      <app-edit-email [email]="selectedRow" [emails]="emails"></app-edit-email>
+    </div>

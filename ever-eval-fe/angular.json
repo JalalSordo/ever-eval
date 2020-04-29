@@ -1,0 +1,141 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "Ever-val-angular": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/Ever-val-angular",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": false,
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "src/assets/vendor/sweetalert/lib/sweet-alert.css",
+              "src/styles.css",
+              "src/assets/vendor/fontawesome/css/font-awesome.css",
+              "src/assets/vendor/metisMenu/dist/metisMenu.css",
+              "src/assets/vendor/animate.css/animate.css",
+              "src/assets/vendor/bootstrap/dist/css/bootstrap.css",
+              "src/assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.css",
+              "src/assets/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css",
+              "src/assets/fonts/pe-icon-7-stroke/css/helper.css",
+              "src/assets/styles/style.css",
+              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css"
+            ],
+            "scripts": [
+              "src/assets/vendor/jquery/dist/jquery.min.js",
+              "src/assets/vendor/jquery-ui/jquery-ui.min.js",
+              "src/assets/vendor/slimScroll/jquery.slimscroll.min.js",
+              "src/assets/vendor/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/vendor/jquery-flot/jquery.flot.js",
+              "src/assets/vendor/jquery-flot/jquery.flot.resize.js",
+              "src/assets/vendor/jquery-flot/jquery.flot.pie.js",
+              "src/assets/vendor/flot.curvedlines/curvedLines.js",
+              "src/assets/vendor/jquery.flot.spline/index.js",
+              "src/assets/vendor/metisMenu/dist/metisMenu.min.js",
+              "src/assets/vendor/iCheck/icheck.min.js",
+              "src/assets/vendor/peity/jquery.peity.min.js",
+              "src/assets/vendor/sparkline/index.js",
+              "src/assets/vendor/datatables/media/js/jquery.dataTables.min.js",
+              "src/assets/vendor/datatables_plugins/integration/bootstrap/3/dataTables.bootstrap.min.js",
+              "src/assets/scripts/homer.js",
+              "src/assets/scripts/charts.js",
+              "node_modules/jszip/dist/jszip.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/datatables.net-buttons/js/buttons.colVis.js",
+              "node_modules/datatables.net-buttons/js/buttons.flash.js",
+              "node_modules/datatables.net-buttons/js/buttons.html5.js",
+              "node_modules/datatables.net-buttons/js/buttons.print.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "Ever-val-angular:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "Ever-val-angular:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "Ever-val-angular:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "Ever-val-angular:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Ever-val-angular:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "Ever-val-angular"
+}

@@ -1,0 +1,65 @@
+<div id="header">
+    <div class="color-line"></div>
+    <div id="logo" class="light-version">
+      <span>
+        EverEval
+      </span>
+    </div>
+    <nav role="navigation">
+      <div class="header-link hide-menu"><i class="fa fa-bars"></i></div>
+      <div class="small-logo">
+        <span class="text-primary">EverEval</span>
+      </div>
+      <div class="mobile-menu">
+        <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse"
+          data-target="#mobile-collapse">
+          <i class="fa fa-chevron-down"></i>
+        </button>
+        <div class="collapse mobile-navbar" id="mobile-collapse">
+          <ul class="nav navbar-nav">
+            <li (click)="logout()">logout</li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-right">
+      </div>
+    </nav>
+  </div>
+
+  <div  class="container">
+          
+    <div id='title'>
+          <h3>{{candidate.techno}} Quiz</h3>
+      </div>
+    <br/>
+
+    <div id="h4Start">
+        
+        <b>technologie:</b> {{candidate.techno}}
+        <br/>
+        <b>Level:</b> {{quiz.level}}
+        <br/>
+        <b>Questions:</b> {{quiz.totalQuestion}}
+        <br/>
+        <br/><br/>
+        <p style="color:#dc026b;"><b>Discripiton</b></p>
+        {{description}}
+        <h4 >Click Pass to start the quiz</h4>
+    </div>
+    
+  
+    
+    <button class="btn btn-info " type="button" data-toggle="modal" data-target="#passQuiz"
+    (click)="open(quiz)" *ngIf="!quiz.done">
+    <i class="fa fa-paste"></i> Pass
+  </button>
+  
+  
+</div>
+<app-pass-quiz [selectedQuiz]="selectedQuiz" [index]="index" (done)="quizQone($event)"></app-pass-quiz>
+<footer class="footer">
+  <span class="pull-right">
+    EverEval
+  </span>
+  Everis 2020
+</footer>

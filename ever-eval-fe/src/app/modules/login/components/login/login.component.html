@@ -1,0 +1,39 @@
+<div class="blank">
+  <div class="color-line"></div>
+  <div class="login-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center m-b-md">
+          <h3>EverEval</h3>
+          <small>please login!</small>
+        </div>
+        <div class="hpanel">
+          <div class="panel-body">
+            <form action="#" id="loginForm">
+              <div class="form-group">
+                <label class="control-label" for="mail">email</label>
+                <input type="text" placeholder="example@gmail.com" title="Please enter you mail" name="mail" id="mail"
+                  class="form-control" [(ngModel)]="mail" />
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="password">Password</label>
+                <input type="password" title="Please enter your password" placeholder="********" name="password"
+                  id="password" class="form-control" [(ngModel)]="password" />
+              </div>
+              <!-- <div class="checkbox">
+                <input type="checkbox" class="i-checks" checked />
+                Remember login
+              </div> -->
+              <button class="btn btn-success btn-block" (click)="login()">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <strong>EVEREVAL</strong> - {{ today | date: 'yyyy' }} Copyright Everis <br />
+      </div>
+    </div>
+  </div>
+</div>

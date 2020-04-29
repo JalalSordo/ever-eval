@@ -1,0 +1,114 @@
+<div class="modal fade" id="editStaff" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Edit staff</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editReactiveForm" (ngSubmit)="edit(selectedRow.id, editReactiveForm.value)"
+                    class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Firstname</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="FirstName" name="firstName"
+                                class="form-control {{ !editReactiveForm.controls.firstName.valid && editReactiveForm.controls.firstName.touched ? 'error' : '' }}"
+                                formControlName="firstName" />
+                            <div
+                                *ngIf="editReactiveForm.controls.firstName.errors?.required && editReactiveForm.controls.firstName.touched">
+                                <label class="error">Faild required!</label>
+                            </div>
+                            <div *ngIf="editReactiveForm.controls.firstName.errors?.pattern">
+                                <label class="error">First name is not a valid name!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Lastname</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="LastName" name="lastName"
+                                class="form-control {{ !editReactiveForm.controls.lastName.valid && editReactiveForm.controls.lastName.touched ? 'error' : '' }}"
+                                formControlName="lastName" />
+                            <div
+                                *ngIf="editReactiveForm.controls.lastName.errors?.required && editReactiveForm.controls.lastName.touched">
+                                <label class="error">Faild required!</label>
+                            </div>
+                            <div *ngIf="editReactiveForm.controls.lastName.errors?.pattern">
+                                <label class="error">Last name is not a valid name!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" placeholder="Mail" name="mail"
+                                class="form-control {{ !editReactiveForm.controls.mail.valid && editReactiveForm.controls.mail.touched ? 'error' : '' }}"
+                                formControlName="mail" />
+                            <div
+                                *ngIf="editReactiveForm.controls.mail.errors?.required && editReactiveForm.controls.mail.touched">
+                                <label class="error">Faild required!</label>
+                            </div>
+                            <div *ngIf="editReactiveForm.controls.mail.errors?.email">
+                                <label class="error">Email address is not avalid email!</label>
+                            </div>
+                            <div *ngIf="editReactiveForm.controls.mail.errors?.emailExist && editReactiveForm.controls.mail.touched">
+                                <label class="error">Email already exist!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="role">Role</label>
+                        <div class="col-sm-10">
+                            <select name="role" placeholder="Role" name="role"
+                                class="form-control {{ !editReactiveForm.controls.role.valid && editReactiveForm.controls.role.touched ? 'error' : '' }}"
+                                id="role" value="{{selectedRow.role}}" formControlName="role">
+                                <option disabled selected>Select your role</option>
+                                <option>HR</option>
+                                <option>EVALUATOR</option>
+                            </select>
+                            <div
+                                *ngIf="!editReactiveForm.controls.role.valid && editReactiveForm.controls.role.touched">
+                                <label class="error">Faild required!</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed">
+
+                    </div>
+
+                   <!--  <div class="form-group">
+                        <label class="col-sm-2 control-label">Password</label>
+
+                        <div class="col-sm-10">
+                            <input type="password" name="password" placeholder="password"
+                                class="form-control {{ !editReactiveForm.controls.password.valid && editReactiveForm.controls.password.touched ? 'error' : '' }}"
+                                name="password" formControlName="password" />
+                            <div
+                                *ngIf="editReactiveForm.controls.password.errors?.required && editReactiveForm.controls.password.touched">
+                                <label class="error">Faild required!</label>
+                            </div>
+                            <div *ngIf="editReactiveForm.controls.password.errors?.minlength">
+                                <label class="error">Password must be at least 6 characters long!</label>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="hr-line-dashed"></div>
+                    <input type="submit" hidden (ngSubmit)="edit(selectedRow.id, editReactiveForm.value)"
+                        [disabled]="!editReactiveForm.valid" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="cheatEditStaff" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="edit(selectedRow.id, editReactiveForm.value)"
+                    value="Submit Form" [disabled]="!editReactiveForm.valid">
+                    <swal #editSwal title="Done" text="The staff has been edited" type="success"></swal>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

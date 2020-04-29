@@ -1,0 +1,46 @@
+<div class="modal fade" id="{{showedModal}}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="color-line"></div>
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Number of questions in a quiz</h4>
+        <div class="modal-body">
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group" *ngIf="selectedRow">
+                <label class="col-sm-2 control-label">Total Questions</label>
+
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" name="totalQuestion" [(ngModel)]="totalQ" />
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="cheatquiz">
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary" (click)="createQuiz()">
+                  <swal #numberQuestionsFailSwal title="Error"
+                    text="Sorry, there are not enough questions." type="error">
+                  </swal>
+                  <swal #convokeSuccessSwal title="Done"
+                    text="An email has been sent to candidate containing their quiz" type="success">
+                  </swal>
+                  <swal #convokeFailSwal title="Error"
+                    text="Sorry, an error occured. The email hasn't been sent to candidate." type="error">
+                  </swal>
+                  <swal #convokeSuccessSwalAll title="Done"
+                    text="An email has been sent to candidates containing their quiz" type="success"></swal>
+                  <swal #convokeFailSwalAll title="Error" text="All the candidates has already been convoked"
+                    type="warning">
+                  </swal>
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

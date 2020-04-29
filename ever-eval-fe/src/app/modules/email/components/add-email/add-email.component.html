@@ -1,0 +1,80 @@
+<div class="modal fade" id="addEmail" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="color-line"></div>
+			<div class="modal-header">
+
+				<h4 class="modal-title text-center">Add email content</h4>
+
+				<div class="modal-body">
+					<div class="panel-body">
+						<form [formGroup]="emailFromGroup" (ngSubmit)="addEmail(emailFromGroup.value)" class="form-horizontal" #emailForm="ngForm">
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Subject</label>
+								<div class="col-sm-10">
+									<input type="text" 
+										name="subject"
+										formControlName="subject"
+										placeholder="Subject"
+										class="form-control {{ !emailFromGroup.controls.subject.valid && emailFromGroup.controls.subject.touched ? 'error' : '' }}"
+									/>
+
+									<div *ngIf="emailFromGroup.controls.subject.errors?.required && emailFromGroup.controls.subject.touched">
+										<label class="error">Faild required!</label>
+									</div>
+									<div *ngIf="emailFromGroup.controls.subject.errors?.minlength">
+										<label class="error">Subject must be at least 5 characters long!</label>
+									</div>
+									<div *ngIf="emailFromGroup.controls.subject.errors?.pattern">
+										<label class="error">Subject not valid!</label>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Message Text</label>
+								
+								<div class="col-sm-10">
+									<textarea type="text"
+										required name="messageText"
+										formControlName="messageText"
+										placeholder="Message Text"
+										class="form-control {{ !emailFromGroup.controls.messageText.valid && emailFromGroup.controls.messageText.touched ? 'error' : '' }}"
+									></textarea>
+									
+									<div *ngIf="emailFromGroup.controls.messageText.errors?.required && emailFromGroup.controls.messageText.touched">
+										<label class="error">Faild required!</label>
+									</div>
+									<div *ngIf="emailFromGroup.controls.messageText.errors?.minlength">
+										<label class="error">Message Text must be at least 20 characters long!</label>
+									</div>
+									<div *ngIf="emailFromGroup.controls.messageText.errors?.pattern">
+										<label class="error">Message Text not valid!</label>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal" id="cheat">
+									Close
+								</button>
+								<button type="submit" class="btn btn-primary" (Click)="addSwal.show()" [disabled]="!emailFromGroup.valid">
+									<swal #addSwal title="Done" text="A new email has been added" type="success">
+									</swal>
+									<swal #subjectSwal title="Subject exist" type="warning">
+									</swal>
+									Add email
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

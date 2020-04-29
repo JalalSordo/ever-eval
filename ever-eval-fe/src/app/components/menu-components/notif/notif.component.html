@@ -1,0 +1,26 @@
+<ul class="nav navbar-nav no-borders">
+  <!--<li class="dropdown">
+    <a class="dropdown-toggle label-menu-corner" href="#" data-toggle="dropdown">
+      <i class="pe-7s-mail"></i>
+      <span class="label label-success">{{ this.filterUnread() }}</span>
+    </a>
+    <ul class="dropdown-menu hdropdown animated flipInX">
+      <div class="title">You have {{ this.filterUnread() }} unread notifications</div>
+      <div class="over" id="scroller">
+        <ng-container *ngFor="let notification of notifications">
+          <ng-container *ngIf="notification.receivers.length == 0 || notification.receivers.includes(staff.id)">
+            <li [ngClass]="{ 'read-notif': notification.read }">
+              <a>
+                {{ notification.text }}
+              </a>
+            </li>
+          </ng-container>
+        </ng-container>
+      </div>
+      <li class="summary"><a href="#">See All notifications</a></li>
+    </ul>
+  </li>-->
+  <li class="dropdown" (click)="logout()">
+    <a><i class="pe-7s-upload pe-rotate-90"></i></a>
+  </li>
+</ul>

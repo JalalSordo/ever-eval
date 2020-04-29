@@ -1,0 +1,16 @@
+<aside id="menu">
+  <div id="navigation">
+    <div class="profile-picture">
+      <img src="/assets/images/logo_everis.png" alt="Everis" style="width: 100%;" *ngIf="!staff.picture"/>
+      <div class="stats-label text-color">
+        <span class="font-extra-bold font-uppercase">{{
+          staff.lastName + ' ' + staff.firstName
+        }}</span>
+      </div>
+      <div class="stats-label text-info">
+        <span class="font-light">{{ staff.mail }}</span>
+      </div>
+    </div>
+    <app-side-menu-element [staff]="staff"></app-side-menu-element>
+  </div>
+</aside>

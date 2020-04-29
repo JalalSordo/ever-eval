@@ -1,0 +1,65 @@
+<div id="wrapper">
+  <div class="normalheader transition animated fadeIn small-header">
+    <div class="hpanel">
+      <div class="panel-body">
+        <h2 class="font-light m-b-xs">
+          Quiz list
+        </h2>
+        <small>Quiz revision.</small>
+      </div>
+    </div>
+    <div class="content animate-panel">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="hpanel">
+            <div class="panel-heading">
+              Quiz list
+            </div>
+            <div class="panel-body">
+              <table id="example1" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                class="footable table table-stripped toggle-arrow-tiny" data-page-size="3" data-filter="#filter">
+                <thead>
+                  <tr>
+                    <th>Level</th>
+                    <th>Technology</th>
+                    <th>Quiz status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let quiz of quizes">
+                    <td class="text-dark">{{ quiz.level }}</td>
+                    <td class="text-dark">{{ quiz.techno }}</td>
+
+                    <td>
+
+                      <button class="btn btn-info " type="button" data-toggle="modal" [disabled]="!quiz.done" *ngIf="!quiz.done">
+                        <i class="fa fa-paste"></i> Pass
+                      </button>
+                      <button class="btn btn-success" type="button" *ngIf="quiz.evaluated && quiz.done"
+                        [disabled]="quiz.evaluated && quiz.done">
+                        <i class="fa fa-paste"></i> Evaluated
+                      </button>
+                      <button class="btn btn-info " type="button" data-toggle="modal" data-target="#evalQuiz"
+                        (click)="openEval(quiz)" *ngIf="!quiz.evaluated && quiz.done">
+                        <i class="fa fa-paste"></i> Evaluation
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-eval-quiz [selectedQuizEval]="selectedQuizEval" (evaluated)="quizEvaluation($event)"></app-eval-quiz>
+  <app-pass-quiz [selectedQuiz]="selectedQuiz" [index]="index" (done)="quizQone($event)"></app-pass-quiz>
+  <footer class="footer">
+    <span class="pull-right">
+      EverEval
+    </span>
+    Everis 2019
+  </footer>
+</div>

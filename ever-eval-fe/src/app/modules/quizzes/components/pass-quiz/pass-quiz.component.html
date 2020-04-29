@@ -1,0 +1,116 @@
+<div class="modal fade" id="passQuiz" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">The quiz</h4>
+            </div>
+            <div class="modal-body">
+
+                <form method="get" class="form-horizontal" id="quiz-{index}">
+                    <div *ngIf="selectedQuiz.quizQuestions[index]" style="margin-left: 20%;">
+                        <table id="quiz" class="footable table table-stripped toggle-arrow-tiny" data-page-size="2"
+                            data-filter="#filter">
+                            <thead>
+                                <tr>
+                                    <th class="badge badge-info">
+                                        <h5>Question {{index+1}} of {{selectedQuiz.quizQuestions.length}}.</h5>
+
+
+                                    </th>
+                                    <th class="text-red" style="margin-left: 50%;">
+                                        <h3>
+                                            {{countDown | async | formatTime}}
+                                            <div
+                                                *ngIf="counter===time && index===0">
+                                                {{countDownf()}}
+                                            </div>
+                                            <div *ngIf="TestOfCount(counter) && index<selectedQuiz.quizQuestions.length">
+                                                {{countD()}}
+
+                                            </div>
+                                        </h3>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>
+                                    <h2>{{selectedQuiz.quizQuestions[index].question.content}}.
+                                    </h2>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="text-dark" style="margin-left: 10%;margin-right: 40%;">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td class="text-dark"
+                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='CHECKBOX'">
+                                                    <div class="form-group">
+                                                        <div class="text-dark"
+                                                            *ngFor="let pr of selectedQuiz.quizQuestions[index].question.proposedResponses">
+                                                            <input type="checkbox" name="content"
+                                                                [(ngModel)]="pr.checked"
+                                                                (change)="checkboxChangeHandler(pr.checked,pr.content)">{{pr.content}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-dark"
+                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='RADIO'">
+                                                    <div class="form-group"
+                                                        *ngFor="let pr of selectedQuiz.quizQuestions[index].question.proposedResponses; let i=index">
+                                                        <input type="radio" (change)="radioChangeHandler(pr.content)"
+                                                            name="proposedResponses[{{i}}].content" [value]="pr.content"
+                                                            [(ngModel)]="answer.content">{{pr.content}}
+
+                                                    </div>
+                                                </td>
+                                                <td class="text-dark"
+                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='TEXTFIELD'">
+                                                    <div class="form-group">
+                                                        <input type="text" placeholder="Content"
+                                                            name="quizQuestions[{{index}}].answers[0].content"
+                                                            class="form-control" id="content"
+                                                            [(ngModel)]="answer.content">
+                                                    </div>
+                                                </td>
+                                                <td class="form-group"
+                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='TEXTAREA'">
+                                                    <div class="form-group"><textarea type="text" placeholder="Content"
+                                                            [(ngModel)]="answer.content"
+                                                            name="quizQuestions[{{index}}].answers[0].content"
+                                                            class="form-control" id="answer-text-{{index}}"></textarea>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                </td>
+                            </tbody>
+                        </table>
+
+                        <div>
+                            <button type="button" class="btn btn-primary" (click)="countD()" style="margin-left: 70%;">
+
+                                Next</button>
+                        </div>
+                    </div>
+                    <div class="text-center" *ngIf="!selectedQuiz.quizQuestions[index]">
+                        <p>The end of the quiz</p>
+                    </div>
+                </form>
+
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="cheatQuiz" (click)="stop()">
+                    <swal #quizSwal title="Done" text="The end of the quiz" type="success"></swal>
+                    Finish
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

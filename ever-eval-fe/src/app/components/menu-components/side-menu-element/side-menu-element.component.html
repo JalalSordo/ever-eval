@@ -1,0 +1,9 @@
+<ul class="nav" id="side-menu">
+  <ng-container *ngFor="let element of elements">
+    <li *ngIf="element.role.includes(this.staff.role)">
+      <a routerLink="{{ element.path }}" routerLinkActive="activeClass">
+        <span class="nav-label">{{ element.name }}</span>
+      </a>
+    </li>
+  </ng-container>
+</ul>

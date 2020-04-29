@@ -1,0 +1,123 @@
+<div class="modal fade" id="evalQuiz" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Evaluation of quiz</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="panel-body">
+                    <div *ngIf="selectedCandidate !== undefined">
+                        <blockquote class="col-md-6">
+                            <div>
+                                <h5><strong>Candidate id:</strong> {{ selectedCandidate.id }}</h5>
+                            </div>
+                            <div>
+                                <h5><strong>Full name:</strong> {{ selectedCandidate.name }}</h5>
+                            </div>
+                            <div>
+                                <h5><strong>Email address:</strong> {{ selectedCandidate.mail }}</h5>
+                            </div>
+                        </blockquote>
+                        <blockquote class="col-md-6">
+                            <div>
+                                <h6><strong>Quiz id:</strong> {{ selectedQuizEval.id }}</h6>
+                            </div>
+                            <div>
+                                <h6><strong>Level:</strong> {{ getExactFullLevelName(selectedQuizEval.level) }}</h6>
+                            </div>
+                            <div>
+                                <h6><strong>Technology:</strong> {{ selectedQuizEval.techno }}</h6>
+                            </div>
+                            <div>
+                                <h6><strong>Total score:<span class="{{ getScoreColor(selectedCandidate.score) }}"> {{ selectedCandidate.score }}</span>%</strong></h6>
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
+                <form method="get" class="form-horizontal">
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="panel-body">
+                        <table id="example1" class="table table-bordered table-striped" data-page-size="3"
+                            data-filter=#filter>
+                            <thead>
+                                <tr>
+                                    <th>Questions</th>
+                                    <th>Answers</th>
+                                    <th>Score</th>
+                                    <th>Initial Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let qst of selectedQuizEval.quizQuestions; let ii=index">
+                                    <td class="text-dark">{{qst.question.content}}</td>
+                                    <td class="text-dark">
+                                        <!-- <table class="table table-striped">
+                                                <tr>
+                                                    <td class="text-dark"  *ngIf="qst.question.type==='CHECKBOX'  ">
+                                                        <div *ngFor="let pr of qst.question.proposedResponses"><input type="checkbox" name="content" value="{{pr.id}}" [(ngModel)]="pr.checked">{{pr.content}}</div>
+                                                    </td>
+                                                    <td class="text-dark" *ngIf="qst.question.type==='RADIO' ">
+                                                        <div *ngFor="let pr of qst.question.proposedResponses"><input type="radio" name="{{qst.question.id}}"
+                                                            >{{pr.content}}</div>
+                                                    </td>
+                                                    <td class="text-dark" *ngIf="qst.question.type==='TEXTFIELD'">
+                                                        <div><input type="text" placeholder="content" name="content"
+                                                                class="form-control"></div>
+                                                    </td>
+                                                    <td class="text-dark form-group" *ngIf="qst.question.type==='TEXTAREA'">
+                                                            <div class="form-group"><textarea type="text"  placeholder="State" name="state"
+                                                                class="form-control" id="state" value="hi"></textarea></div>
+                                                    </td>
+                                                </tr>
+                                            </table>-->
+                                        <!-- <table class="table table-striped">
+                                            <td class="text-dark"> -->
+                                                <ul>
+                                                    <div *ngFor="let ans of qst.answers">
+                                                        <li>
+                                                            {{ans.content}}
+                                                        </li>
+                                                    </div>
+                                                </ul>
+                                            <!-- </td>
+                                        </table> -->
+                                    </td>
+                                    <td class="text-dark">
+                                        <div *ngIf="qst.question.type==='TEXTAREA' || qst.question.type==='TEXTFIELD'; else radioOrCheckbox">
+                                            <div *ngFor="let ans of qst.answers; let i = index;">
+                                                <input type="text" placeholder="Score" name="score" class="form-control"
+                                                    style="width: 50%;" [(ngModel)]="ans.score" value="0"></div>
+                                        </div>
+                                        <ng-template #radioOrCheckbox>
+                                                <div *ngIf="qst.question.type === 'RADIO'">
+                                                    {{ qst.answers[0].score }}
+                                                </div>
+                                                <div *ngIf="qst.question.type === 'CHECKBOX'">
+                                                    <!-- <div *ngFor="let answer of qst.answers"> -->
+                                                        {{ calculateTotalAnswersScore(qst.answers) }}
+                                                    <!-- </div> -->
+                                                </div>
+                                        </ng-template>
+                                    </td>
+                                    <td class="text-dark">{{qst.question.score}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="eval">Close</button>
+                
+                <button type="submit" class="btn btn-primary" (click)="insertScoreOfAnswers()">
+                    <swal #evalSwal title="Done" text="The quiz has been evaluated. Please refresh the page." type="success"></swal>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

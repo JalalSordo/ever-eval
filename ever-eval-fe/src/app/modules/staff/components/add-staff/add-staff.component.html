@@ -1,0 +1,135 @@
+<div class="modal fade" id="addStaff" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="color-line"></div>
+      <div class="modal-header text-center">
+        <h4 class="modal-title">Add staff</h4>
+      </div>
+      <div class="modal-body">
+        <form method="get" class="form-horizontal" [formGroup]="addReactiveForm"
+          (ngSubmit)="addStaff(addReactiveForm.value)">
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Firstname<span class="error font-trans">*</span></label>
+
+            <div class="col-sm-10">
+              <input type="text" formControlName="firstName" placeholder="FirstName" name="firstName"
+                class="form-control {{ !addReactiveForm.controls.firstName.valid && addReactiveForm.controls.firstName.touched ? 'error' : '' }}" />
+              <div
+                *ngIf="addReactiveForm.controls.firstName.errors?.required && addReactiveForm.controls.firstName.touched">
+                <label class="error">Faild required!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.firstName.errors?.minlength">
+                <label class="error">Firt name must be at least 3 characters long!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.firstName.errors?.pattern">
+                <label class="error">Firt name not valid!</label>
+              </div>
+            </div>
+
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Lastname<span class="error font-trans">*</span></label>
+
+            <div class="col-sm-10">
+              <input type="text" formControlName="lastName" placeholder="LastName" name="lastName"
+                class="form-control {{ !addReactiveForm.controls.lastName.valid && addReactiveForm.controls.lastName.touched ? 'error' : '' }}" />
+              <div
+                *ngIf="addReactiveForm.controls.lastName.errors?.required && addReactiveForm.controls.lastName.touched">
+                <label class="error">Faild required!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.lastName.errors?.minlength">
+                <label class="error">Last name must be at least 3 characters long!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.lastName.errors?.pattern">
+                <label class="error">Last name not valid!</label>
+              </div>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Email<span class="error font-trans">*</span></label>
+            <div class="col-sm-10">
+              <input type="text" formControlName="mail" placeholder="Address email" name="mail"
+                class="form-control {{ !addReactiveForm.controls.mail.valid && addReactiveForm.controls.mail.touched ? 'error' : '' }}" />
+              <div *ngIf="addReactiveForm.controls.mail.errors?.required && addReactiveForm.controls.mail.touched">
+                <label class="error">Faild required!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.mail.errors?.email && addReactiveForm.controls.mail.touched">
+                <label class="error">Email address is not avalid email!</label>
+              </div>
+              <div *ngIf="addReactiveForm.controls.mail.errors?.emailExist && addReactiveForm.controls.mail.touched">
+                <label class="error">Email already exist!</label>
+              </div>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="role">Role<span class="error font-trans">*</span></label>
+            <div class="col-sm-10">
+              <select name="role" formControlName="role" placeholder="Role" name="role"
+                class="form-control {{ !addReactiveForm.controls.role.valid && addReactiveForm.controls.role.touched ? 'error' : '' }}">
+                <option disabled selected>Select your role</option>
+                <option>HR</option>
+                <option>EVALUATOR</option>
+              </select>
+              <div *ngIf="addReactiveForm.controls.role.errors?.required && addReactiveForm.controls.role.touched">
+                <label class="error">Faild required!</label>
+              </div>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Password<span class="error font-trans">*</span></label>
+
+            <div class="col-sm-10">
+              <input type="password" formControlName="password" name="password" placeholder="password"
+                class="form-control {{ !addReactiveForm.controls.password.valid && addReactiveForm.controls.password.touched ? 'error' : '' }}" />
+              <div
+                *ngIf="addReactiveForm.controls.password.errors?.required && addReactiveForm.controls.password.touched">
+                <label class="error">Faild required!</label>
+              </div>
+              <div
+                *ngIf="addReactiveForm.controls.password.errors?.minlength && addReactiveForm.controls.password.touched">
+                <label class="error">Password must be at least 6 characters long!</label>
+              </div>
+            </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Confirmation<span class="error font-trans">*</span></label>
+
+            <div class="col-sm-10">
+              <input type="password" formControlName="passwordConfirmation" name="password-confirmation"
+                placeholder="Password confirmation"
+                class="form-control {{ !addReactiveForm.controls.passwordConfirmation.valid && addReactiveForm.controls.passwordConfirmation.touched ? 'error' : '' }}" />
+              <div
+                *ngIf="addReactiveForm.controls.passwordConfirmation.errors?.required && addReactiveForm.controls.passwordConfirmation.touched">
+                <label class="error">Faild is required!</label>
+              </div>
+              <div
+                *ngIf="addReactiveForm.controls.passwordConfirmation.errors?.mustMatch && addReactiveForm.controls.passwordConfirmation.touched">
+                <label class="error">Passwords must match!</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="hr-line-dashed"></div>
+
+          <input type="submit" hidden (ngSubmit)="addStaff(addReactiveForm.value)"
+            [disabled]="!addReactiveForm.valid" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="cheat">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addStaff(addReactiveForm.value)"
+          [disabled]="!addReactiveForm.valid">
+          <swal #addSwal title="Done" text="A new staff has been added" type="success"></swal>
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,251 @@
+<div id="wrapper">
+  <div class="normalheader transition animated fadeIn small-header">
+    <div class="hpanel">
+      <div class="panel-body">
+        <h2 class="font-light m-b-xs">
+          Home
+        </h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="content animate-panel animated fadeIn">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="text-center">
+              <h2 class="m-b-xs">Candidates</h2>
+              <p class="font-bold text-success">Candidates management</p>
+              <div class="m">
+                <i class="pe-7s-users fa-5x"></i>
+              </div>
+              <p class="small">
+                Candidates can be managed by the human resources personnel, candidates can be
+                created, retrieve, updated and deleted as well as convened to pass the evaluation
+                test.
+              </p>
+              <button routerLink="candidates" class="btn btn-success btn-sm"
+                *ngIf="['ADMIN', 'HR'].includes(this.staff.role)">
+                Manage Candidates
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="text-center">
+              <h2 class="m-b-xs">Questions</h2>
+              <p class="font-bold text-info">Questions management</p>
+              <div class="m">
+                <i class="pe-7s-note2 fa-5x"></i>
+              </div>
+              <p class="small">
+                Questions are managed by evaluators. they can be created, retrieved, updated and
+                deleted. quizzes are automatically generated from these questions when a candidate
+                is convoked.
+              </p>
+              <button class="btn btn-info btn-sm" routerLink="questions"
+                *ngIf="['ADMIN', 'EVALUATOR'].includes(this.staff.role)">
+                Manage Questions
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="text-center">
+              <h2 class="m-b-xs">Answers</h2>
+              <p class="font-bold text-warning">Quiz answers</p>
+              <div class="m">
+                <i class="pe-7s-pen fa-5x"></i>
+              </div>
+              <p class="small">
+                When a candidate passes a quiz, each answer is evaluated appropriately in a
+                transparent manner by the evaluators in order to give the HR personnel a clear grasp
+                of a candidate's abilities.
+              </p>
+              <button class="btn btn-warning btn-sm" routerLink="quizzes"
+                *ngIf="['ADMIN', 'EVALUATOR'].includes(this.staff.role)">
+                Evaluate answers
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="text-center">
+              <h2 class="m-b-xs">Results</h2>
+              <p class="font-bold text-danger">Quiz results</p>
+              <div class="m">
+                <i class="pe-7s-graph3 fa-5x"></i>
+              </div>
+              <p class="small">
+                After a quiz is evaluated by an evaluator, Human resources personnel can then
+                proceed to either accept or reject candidates based on the final score on their
+                tests and other factors.
+              </p>
+              <button class="btn btn-danger btn-sm" routerLink="results"
+                *ngIf="['ADMIN', 'HR'].includes(this.staff.role)">
+                View results
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="hpanel hbggreen">
+          <div class="panel-body">
+            <div class="text-center">
+              <h3>Potential recruits:</h3>
+              <p class="text-big font-light">
+                {{potentialRecruits}}
+              </p>
+              <small>
+                new candidates that specialize in 3 different technologies are waiting to pass
+                evaluation quizzes
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel hbgblue">
+          <div class="panel-body">
+            <div class="text-center">
+              <h3>Total questions:</h3>
+              <p class="text-big font-light">
+                {{totalQuestions}}
+              </p>
+              <small>
+                questions spanning 3 technologies and 5 levels can be used to generate evaluation
+                quizzes for your candidates
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel hbgyellow">
+          <div class="panel-body">
+            <div class="text-center">
+              <h3>Waiting for evaluation:</h3>
+              <p class="text-big font-light">
+                {{answersToEvaluate}}
+              </p>
+              <small>
+                answers are currently waiting to be evaluated and scored.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel hbgred">
+          <div class="panel-body">
+            <div class="text-center">
+              <h3>Average quiz results:</h3>
+              <p class="text-big font-light">
+                {{avgResult}}%
+              </p>
+              <small>
+                is the average score the candidates got on the evaluation quizzes.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="stats-title pull-left">
+              <h4>Convoked so far:</h4>
+            </div>
+            <div class="stats-icon pull-right">
+              <i class="pe-7s-mail fa-4x"></i>
+            </div>
+            <div class="m-t-xl">
+              <h1 class="text-success">{{totalQuizSent}}</h1>
+              <small>
+                Candidates have been invited to pass the evaluation tests through
+                <strong>EverEval</strong> ever since its launch.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="stats-title pull-left">
+              <h4>Onhold quizzes:</h4>
+            </div>
+            <div class="stats-icon pull-right">
+              <i class="pe-7s-help1 fa-4x"></i>
+            </div>
+            <div class="m-t-xl">
+              <h1 class="text-info">{{waitingForEvaluation}}</h1>
+              <small>
+                Quizzes are waiting to be evaluated currently.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="stats-title pull-left">
+              <h4>Evaluated quizzes:</h4>
+            </div>
+            <div class="stats-icon pull-right">
+              <i class="pe-7s-clock fa-4x"></i>
+            </div>
+            <div class="m-t-xl">
+              <h1 class="text-warning">{{evaluatedQuiz}}</h1>
+              <small>
+                Quizzes has been evaluated through
+                <strong>EverEval</strong> ever since its launch.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="hpanel">
+          <div class="panel-body">
+            <div class="stats-title pull-left">
+              <h4>recruited candidates:</h4>
+            </div>
+            <div class="stats-icon pull-right">
+              <i class="pe-7s-target fa-4x"></i>
+            </div>
+            <div class="m-t-xl">
+              <h1 class="text-danger">{{recruitedCandidates}}</h1>
+              <small>
+                Candidates have been recruited through
+                <strong>EverEval</strong> ever since its launch.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <span class="pull-right">
+      EverEval
+    </span>
+    Everis 2019
+  </footer>
+</div>

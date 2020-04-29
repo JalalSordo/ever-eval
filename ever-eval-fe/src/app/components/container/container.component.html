@@ -1,0 +1,5 @@
+<ng-container *ngIf="displayMenu()">
+  <app-header [staff]="staff"></app-header>
+  <app-side-menu [staff]="staff"></app-side-menu>
+</ng-container>
+<router-outlet></router-outlet>

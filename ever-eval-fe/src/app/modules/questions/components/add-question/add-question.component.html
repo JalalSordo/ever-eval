@@ -1,0 +1,194 @@
+<div class="modal fade" id="addQuestion" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Add question</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <form method="get" [formGroup]="addQuestionReactiveForm"
+                        (ngSubmit)="addQuestion(addQuestionReactiveForm.value)">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Content</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" formControlName="content" placeholder="Content" name="content"
+                                    class="form-control {{ !addQuestionReactiveForm.controls.content.valid && addQuestionReactiveForm.controls.content.touched ? 'error' : '' }}">
+                                <div
+                                    *ngIf="addQuestionReactiveForm.controls.content.errors?.required && addQuestionReactiveForm.controls.content.touched">
+                                    <label class="error">Faild required!</label>
+                                </div>
+                                <div
+                                    *ngIf="addQuestionReactiveForm.controls.content.errors?.minlength && addQuestionReactiveForm.controls.content.touched">
+                                    <label class="error">Content must be at least 3 characters long!</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Countdown</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" formControlName="countdown" placeholder="Countdown"
+                                    name="countdown" class="form-control {{ !addQuestionReactiveForm.controls.countdown.valid && addQuestionReactiveForm.controls.countdown.touched ? 'error' : '' }}">
+                                <div
+                                    *ngIf="addQuestionReactiveForm.controls.countdown.errors?.required && addQuestionReactiveForm.controls.countdown.touched">
+                                    <label class="error">Faild required!</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Question score</label>
+
+                            <div class="col-sm-10">
+                                <input type="number" formControlName="score" placeholder="Score" name="score"
+                                    class="form-control {{ !addQuestionReactiveForm.controls.score.valid && addQuestionReactiveForm.controls.score.touched ? 'error' : '' }}">
+                                <div *ngIf="addQuestionReactiveForm.controls.score.errors?.required && addQuestionReactiveForm.controls.score.touched">
+                                    <label class="error">Faild required!</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="level">Level</label>
+                            <div class="col-sm-10">
+                                <select name="level" formControlName="level" placeholder="Level"
+                                    class="form-control {{ !addQuestionReactiveForm.controls.level.valid && addQuestionReactiveForm.controls.level.touched ? 'error' : '' }}"
+                                    id="level">
+                                    <option disabled selected>Select your level</option>
+                                    <option>CD</option>
+                                    <option>CJ</option>
+                                    <option>CSD</option>
+                                    <option>CLD</option>
+                                </select>
+                                <div *ngIf="addQuestionReactiveForm.controls.level.errors?.required && addQuestionReactiveForm.controls.level.touched" >
+                                    <label class="error">Faild required!</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="techno">Technology</label>
+                            <div class="col-sm-10">
+                                <select name="techno" formControlName="techno" placeholder="Technology"
+                                    class="form-control {{ !addQuestionReactiveForm.controls.techno.valid && addQuestionReactiveForm.controls.techno.touched ? 'error' : '' }}" id="techno">
+                                    <option disabled selected>Select your technology</option>
+                                    <option>JAVAEE</option>
+                                    <option>SAP</option>
+                                    <option>DOTNET</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="type">Type</label>
+
+                            <div class="col-sm-10">
+                                <select name="type" formControlName="type" placeholder="Type"
+                                    class="form-control {{ !addQuestionReactiveForm.controls.type.valid && addQuestionReactiveForm.controls.type.touched ? 'error' : '' }}"
+                                    id="type">
+                                    <option disabled selected>Select your type</option>
+                                    <option>RADIO</option>
+                                    <option>CHECKBOX</option>
+                                    <option>TEXTFIELD</option>
+                                    <option>TEXTAREA</option>
+                                </select>
+                                <div *ngIf="addQuestionReactiveForm.controls.type.errors?.required && addQuestionReactiveForm.controls.type.touched" >
+                                    <label class="error">Faild required!</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hr-line-dashed"></div>
+
+
+                        <input type="submit" hidden (ngSubmit)="addQuestion(addQuestionReactiveForm.value)" [disabled]="!addQuestionReactiveForm.valid" />
+                    </form> <!-- End of question form -->
+                    <div *ngIf="addQuestionReactiveForm.controls.type.value === 'RADIO' || addQuestionReactiveForm.controls.type.value === 'CHECKBOX'">
+
+                        <!--
+                            *** Proposed Response form ***
+                        -->
+                        <form [formGroup]="addProposedResponseReactiveForm" (ngSubmit)="listPR(addProposedResponseReactiveForm.value)">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Proposed Response </label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" placeholder="Content" name="content"
+                                        class="form-control {{ !addProposedResponseReactiveForm.controls.content.valid && addProposedResponseReactiveForm.controls.content.touched ? 'error' : '' }}"
+                                        id="content" formControlName="content">
+                                        <div *ngIf="addProposedResponseReactiveForm.controls.content.errors?.required && addProposedResponseReactiveForm.controls.content.touched">
+                                            <label class="error">Faild required!</label>
+                                        </div>
+                                        <div *ngIf="addProposedResponseReactiveForm.controls.content.errors?.minlength && addProposedResponseReactiveForm.controls.content.touched">
+                                            <label class="error">Content must be at least 3 characters long!</label>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+                            <!--  -->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">State</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" placeholder="State" name="state"
+                                        class="form-control  {{ !addProposedResponseReactiveForm.controls.state.valid && addProposedResponseReactiveForm.controls.state.touched ? 'error' : '' }}" id="state"
+                                        formControlName="state" />
+                                        <div *ngIf="addProposedResponseReactiveForm.controls.state.errors?.required && addProposedResponseReactiveForm.controls.state.touched">
+                                            <label class="error">Faild required!</label>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <!--  -->
+                            <div class="hr-line-dashed"></div>
+                            <!--  -->
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Score</label>
+
+                                <div class="col-sm-10">
+                                    <input type="number" placeholder="Score" name="scorep"
+                                        class="form-control {{ !addProposedResponseReactiveForm.controls.score.valid && addProposedResponseReactiveForm.controls.score.touched ? 'error' : '' }}"
+                                        id="score" formControlName="score" />
+                                        <div *ngIf="addProposedResponseReactiveForm.controls.score.errors?.required && addProposedResponseReactiveForm.controls.score.touched">
+                                            <label class="error">Faild required!</label>
+                                        </div>
+                                    <div class="hr-line-dashed"></div>
+
+                                    <button type="submit" class="btn btn-primary" [disabled]="!addProposedResponseReactiveForm.valid">Add</button>
+                                </div>
+                            </div>
+                            <!--  -->
+                        </form> <!-- End of Proposed Response -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="addQst">Close</button>
+                <button type="button" class="btn btn-primary" (click)="addQuestion(addQuestionReactiveForm.value)"
+                    [disabled]="!addQuestionReactiveForm.valid" >
+                    <swal #addSwalQ title="Done" text="A new question has been added" type="success"></swal>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

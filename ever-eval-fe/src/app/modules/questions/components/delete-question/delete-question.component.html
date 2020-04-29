@@ -1,0 +1,24 @@
+<div class="modal fade" id="deleteQuestion" data-id="staff" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="color-line"></div>
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Delete question</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="text-center">
+                        <p>Do you really want to delete this question ?</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="deleteQst">Close</button>
+                <button type="button" class="btn btn-primary" (click)="deleteQuestion()">
+                    <swal #deleteSwal title="Done" text="The question has been deleted" type="success"></swal>
+                    Yes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
