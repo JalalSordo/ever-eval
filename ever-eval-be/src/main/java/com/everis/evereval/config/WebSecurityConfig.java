@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable()
 				// dont authenticate this particular request
 	.authorizeRequests().antMatchers("/authenticate","/initdb","/findStaff/**","/getCandidateByToken/**" ,"/postQuizAnswers/**","/getCandidatewithoutquiz/**","/getAnswerNoScore/**",
-		"/getQuizByDoneAndEval/**","/getAllQUESTION/**","/findAllC/**","/findQbylevel&tech/**"	).permitAll().and()
+		"/getQuizByDoneAndEval/**","/getAllQUESTION/**","/findAllC/**","/findQbylevel&tech/**","/getCandidateByToken/**").permitAll().and()
 	.authorizeRequests().antMatchers("/getAllCandidateWithEvaluatedQuiz/**","/sendEmail/**","/getAllMails/**","/addCandidate/**","/updateCandidate/**","/deleteCandidateById/**","/getCandidateByMail/**","/addQuizToC/**","/getCandidateByQuizId/**").hasAnyRole("ADMIN","HR").and().
 
 	authorizeRequests().antMatchers("/deleteQuestionById/**","/editQuestion/**","/findbycontent/**","/getAllQuizes/**","/addQuiz/**","/postQuizAnswers/**","/postEvaluatorReview/**","/addScoreToCandidate/**").hasAnyRole("ADMIN","EVALUATOR").and()
