@@ -11,7 +11,7 @@ pipelines:
         caches:
           - maven
         script: # Modify the commands below to build your repository.
-          - mvn -f ever-eval-be/pom.xml clean package # -B batch mode makes Maven less verbose
+          - mvn -f ever-eval-be/pom.xml clean install # -B batch mode makes Maven less verbose
           - tar czfv application.tgz ever-eval-be/
           - pipe: atlassian/heroku-deploy:1.1.3
             variables:
