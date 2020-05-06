@@ -36,6 +36,13 @@ export class TestComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.populateData();
     this.getTest();
   }
+
+  populateData(){
+    this.service.initDb().subscribe(
+      data =>console.log("ok"));
+  }
+  
 }

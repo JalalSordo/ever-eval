@@ -115,6 +115,7 @@
 
 
 	 <build>
+       <finalName>ngboot-app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
