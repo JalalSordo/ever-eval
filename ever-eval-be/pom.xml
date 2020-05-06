@@ -131,7 +131,7 @@
                 </executions>
                 <configuration>
                     <executable>ng</executable>
-                    <workingDirectory>ui</workingDirectory>
+                    <workingDirectory>./ui</workingDirectory>
                     <arguments>
                         <argument>build</argument>
                     </arguments>
