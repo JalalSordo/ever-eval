@@ -13,9 +13,12 @@ import { EvalGuard } from './auth/eval.guard';
 import { HrGuard } from './auth/hr.guard';
 import { EmailComponent } from './modules/email/components/email/email.component';
 import { CandidateQuizComponent } from './modules/quizzes/components/candidate-quiz/candidate-quiz.component';
+import { TestComponent } from './modules/test/components/test/test.component';
+
 
 const routes: Routes = [
 {path: 'candidateQuiz/:token', component: CandidateQuizComponent},
+{path: 'init', component: TestComponent},
   {
     path: 'ADMIN',
     component: ContainerComponent,
