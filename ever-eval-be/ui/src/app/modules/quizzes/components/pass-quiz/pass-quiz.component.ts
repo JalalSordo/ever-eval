@@ -117,17 +117,14 @@ export class PassQuizComponent implements OnInit {
       }
       this.submit();
       if (this.index === this.selectedQuiz.quizQuestions.length) {
-        this.index=0;
-        this.counter=0;
-        this.countDownf();
-        console.log(this.counter);
-        console.log(this.index);
+      	document.getElementById('cheatQuiz').click();
+        this.quizSwal.show();
       }
     }
     else {
       if (this.index >= this.quizIndex) {
-        this.index = 0;
-        this.countDownf();
+      	document.getElementById('cheatQuiz').click();
+        this.quizSwal.show();
       } 
 
     }
