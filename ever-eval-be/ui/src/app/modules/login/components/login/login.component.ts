@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   public staff: Staff;
   redirectUrl: string;
   isLoggedIn = false;
+  NotYet = false;
+
   constructor(private loginservice: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -41,6 +43,16 @@ export class LoginComponent implements OnInit {
         alert('password or email are wrong');
         this.isLoggedIn = false;
       }
+    },
+    (error: any) => {
+      console.log(error);
+      if(error.status == 401)
+      {
+         this.NotYet = true;
+
+         setTimeout(() =>this.NotYet = false , 3000)
+      }
+      return false;   //<- return false in case of error
     });
   }
 }
