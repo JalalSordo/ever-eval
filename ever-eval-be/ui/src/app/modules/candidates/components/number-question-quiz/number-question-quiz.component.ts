@@ -25,6 +25,7 @@ export class NumberQuestionQuizComponent implements OnInit {
   questions: Question[];
   proposedResponses: Array<ProposedResponse> = [];
   quizQuestions: Array<QuizQuestion> = [];
+  loading=false;
   public question: Question = new Question(
     '',
     Level.Default,
@@ -65,6 +66,7 @@ export class NumberQuestionQuizComponent implements OnInit {
       .subscribe(data => {
         this.questions = data;
         if(this.questions.length < this.totalQ){
+         this.loading=false;
           this.numberQuestionsFailSwal.show();
           return;
         }
@@ -84,11 +86,13 @@ export class NumberQuestionQuizComponent implements OnInit {
           .subscribe(res => {
             if(res == "Success"){
               document.getElementById('cheatquiz').click();
+              this.loading=false;
               this.convokeSuccessSwal.show();
             }
           },
           error=>{
             document.getElementById('cheatquiz').click();
+            this.loading=false;
             this.convokeFailSwal.show();
           });
       });
