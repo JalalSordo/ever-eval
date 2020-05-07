@@ -16,10 +16,11 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="cheatquiz">
+                <button [disabled]="loading" type="button" class="btn btn-default" data-dismiss="modal" id="cheatquiz">
                   Close
                 </button>
-                <button type="submit" class="btn btn-primary" (click)="createQuiz()">
+                <button [disabled]="loading" type="submit" class="btn btn-success" (click)="createQuiz()">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                   <swal #numberQuestionsFailSwal title="Error"
                     text="Sorry, there are not enough questions." type="error">
                   </swal>
@@ -36,6 +37,7 @@
                   </swal>
                   Save
                 </button>
+                <h3 *ngIf="loading">Please wait for quiz creation...</h3>
               </div>
             </form>
           </div>
