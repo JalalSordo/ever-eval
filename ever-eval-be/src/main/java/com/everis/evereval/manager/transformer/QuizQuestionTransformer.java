@@ -10,18 +10,22 @@ public class QuizQuestionTransformer extends Transformer<QuizQuestion, QuizQuest
 
 	AnswerTransformer answerTransformer = new AnswerTransformer();
 	QuestionTransformer questionTransformer = new QuestionTransformer();
+	ProposedResponseTransformer proposedResponseTransformer = new ProposedResponseTransformer();
 	@Autowired
 	QuestionService questionService;
 
 	@Override
 	public QuizQuestion toEntity(QuizQuestionDTO dto) {
-		
+
 		if (dto == null) {
 			return null;
 		}
 
-		return new QuizQuestion(dto.getId(), questionTransformer.toEntity(dto.getQuestion()),
+		return new QuizQuestion(dto.getId(), dto.getContent(), dto.getLevel(), dto.getTechno(), dto.getType(),
+				dto.getCountdown(), dto.getScore(),
+				proposedResponseTransformer.toEntityList(dto.getProposedResponses()),
 				answerTransformer.toEntityList(dto.getAnswers()));
+
 	}
 
 	@Override
@@ -31,8 +35,11 @@ public class QuizQuestionTransformer extends Transformer<QuizQuestion, QuizQuest
 			return null;
 		}
 
-		return new QuizQuestionDTO(entity.getId(), questionTransformer.toDTO(entity.getQuestion()),
+		return new QuizQuestionDTO(entity.getId(), entity.getContent(), entity.getLevel(), entity.getTechno(),
+				entity.getType(), entity.getCountdown(), entity.getScore(),
+				proposedResponseTransformer.toDTOList(entity.getProposedResponses()),
 				answerTransformer.toDTOList(entity.getAnswers()));
+
 	}
 
 }

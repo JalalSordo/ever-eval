@@ -5,11 +5,16 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.everis.evereval.dao.entity.enums.Level;
+import com.everis.evereval.dao.entity.enums.Techno;
+import com.everis.evereval.dao.entity.enums.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +32,20 @@ public class QuizQuestion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne // (cascade = CascadeType.REMOVE)
-	private Question question;
+	private String content;
+
+	@Enumerated(EnumType.STRING)
+	private Level level;
+	@Enumerated(EnumType.STRING)
+	private Techno techno;
+	@Enumerated(EnumType.STRING)
+	private Type type;
+	private int countdown;
+	private double score;
+
+	@OneToMany(cascade = { CascadeType.ALL }, orphanRemoval = true)
+	private List<ProposedResponse> proposedResponses = new ArrayList<>();
+
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Answer> answers = new ArrayList<>();

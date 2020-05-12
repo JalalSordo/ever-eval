@@ -31,7 +31,7 @@ public class QuizServiceImpl extends GenericServiceImpl<Quiz, QuizDTO, Long> imp
 	@Override
 	public boolean quizContainsTextAnswers(QuizDTO quizdto) {
 		for (QuizQuestionDTO quizQuestionDTO : quizdto.getQuizQuestions()) {
-			if(quizQuestionDTO.getQuestion().getType() == Type.TEXTFIELD || quizQuestionDTO.getQuestion().getType() == Type.TEXTAREA) {
+			if (quizQuestionDTO.getType() == Type.TEXTFIELD || quizQuestionDTO.getType() == Type.TEXTAREA) {
 				return true;
 			}
 		}

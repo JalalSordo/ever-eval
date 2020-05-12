@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
       if(quizes.length != 0){
         quizes.forEach(quiz => {
           quiz.quizQuestions.forEach(quizQuestion => {
-            if(quizQuestion.question.type == Type.TEXTAREA || quizQuestion.question.type == Type.TEXTFIELD){
+            if(quizQuestion.type == Type.TEXTAREA || quizQuestion.type == Type.TEXTFIELD){
               this.answersToEvaluate++;
             }
           });

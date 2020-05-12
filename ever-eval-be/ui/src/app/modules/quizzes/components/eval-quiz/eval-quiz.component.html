@@ -53,7 +53,7 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let qst of selectedQuizEval.quizQuestions; let ii=index">
-                                    <td class="text-dark">{{qst.question.content}}</td>
+                                    <td class="text-dark">{{qst.content}}</td>
                                     <td class="text-dark">
                                         <!-- <table class="table table-striped">
                                                 <tr>
@@ -87,23 +87,23 @@
                                         </table> -->
                                     </td>
                                     <td class="text-dark">
-                                        <div *ngIf="qst.question.type==='TEXTAREA' || qst.question.type==='TEXTFIELD'; else radioOrCheckbox">
+                                        <div *ngIf="qst.type==='TEXTAREA' || qst.type==='TEXTFIELD'; else radioOrCheckbox">
                                             <div *ngFor="let ans of qst.answers; let i = index;">
                                                 <input type="text" placeholder="Score" name="score" class="form-control"
                                                     style="width: 50%;" [(ngModel)]="ans.score" value="0"></div>
                                         </div>
                                         <ng-template #radioOrCheckbox>
-                                                <div *ngIf="qst.question.type === 'RADIO'">
+                                                <div *ngIf="qst.type === 'RADIO'">
                                                     {{ qst.answers[0].score }}
                                                 </div>
-                                                <div *ngIf="qst.question.type === 'CHECKBOX'">
+                                                <div *ngIf="qst.type === 'CHECKBOX'">
                                                     <!-- <div *ngFor="let answer of qst.answers"> -->
                                                         {{ calculateTotalAnswersScore(qst.answers) }}
                                                     <!-- </div> -->
                                                 </div>
                                         </ng-template>
                                     </td>
-                                    <td class="text-dark">{{qst.question.score}}</td>
+                                    <td class="text-dark">{{qst.score}}</td>
                                 </tr>
                             </tbody>
                         </table>
