@@ -45,6 +45,7 @@ export class NumberQuestionQuizComponent implements OnInit {
     console.log(this.showedModal);
   }
   createQuiz() {
+  this.loading=true;
     if (this.selectedRow.name!="") {
       this.quizCandidate(this.selectedRow);
       this.selectedRow = new Candidate("", "", Level.Default, Techno.Default, 0, false);
