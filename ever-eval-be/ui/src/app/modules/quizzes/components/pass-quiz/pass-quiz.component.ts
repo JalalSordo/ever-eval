@@ -68,16 +68,16 @@ export class PassQuizComponent implements OnInit {
   }
   //To submit the answers & insert to database
   submit() {
-    if (this.selectedQuiz.quizQuestions[this.index].question.type === "RADIO") {
+    if (this.selectedQuiz.quizQuestions[this.index].type === "RADIO") {
       this.selectedQuiz.quizQuestions[this.index].answers[0] = this.answer;
       this.answer = new Answer(0, "");
     }
-    if (this.selectedQuiz.quizQuestions[this.index].question.type === "CHECKBOX") {
+    if (this.selectedQuiz.quizQuestions[this.index].type === "CHECKBOX") {
       this.selectedQuiz.quizQuestions[this.index].answers = this.ansCheckbox;
       this.ansCheckbox = [];
       this.answer = new Answer(0, "");
     }
-    if (this.selectedQuiz.quizQuestions[this.index].question.type === "TEXTFIELD" || this.selectedQuiz.quizQuestions[this.index].question.type === "TEXTAREA") {
+    if (this.selectedQuiz.quizQuestions[this.index].type === "TEXTFIELD" || this.selectedQuiz.quizQuestions[this.index].type === "TEXTAREA") {
       this.selectedQuiz.quizQuestions[this.index].answers[0] = this.answer;
       this.answer = new Answer(0, "");
     }
@@ -99,7 +99,7 @@ export class PassQuizComponent implements OnInit {
   //the first countDown "execute when index=0 & counter=time"
   countDownf() {
     this.quizIndex = this.selectedQuiz.quizQuestions.length;
-    this.cD(this.selectedQuiz.quizQuestions[0].question.countdown);
+    this.cD(this.selectedQuiz.quizQuestions[0].countdown);
   }
   //countDown
   cD(tmp) {
@@ -113,7 +113,7 @@ export class PassQuizComponent implements OnInit {
   countD() {
     if (this.index < this.quizIndex) {
       if (this.index + 1 < this.quizIndex) {
-        this.cD(this.selectedQuiz.quizQuestions[this.index + 1].question.countdown);
+        this.cD(this.selectedQuiz.quizQuestions[this.index + 1].countdown);
       }
       this.submit();
       if (this.index === this.selectedQuiz.quizQuestions.length) {

@@ -35,7 +35,7 @@ export class NumberQuestionQuizComponent implements OnInit {
     0,
     this.proposedResponses
   );
-  qq: QuizQuestion = new QuizQuestion(this.question, this.answers);
+  qq: QuizQuestion = new QuizQuestion(this.question.content,this.question.level,this.question.techno, this.question.type, this.question.countdown,this.question.score, this.question.proposedResponses, this.answers);
   quiz: Quiz;
   @Input() showedModal: string;
 
@@ -74,7 +74,7 @@ export class NumberQuestionQuizComponent implements OnInit {
         this.quizQsts = this.getRandomValues(this.questions, this.totalQ);
         console.log(this.quizQsts);
         this.quizQsts.forEach(element => {
-          this.qq = new QuizQuestion(element, this.answers);
+          this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,element.proposedResponses,this.answers);
           this.quizQuestions.push(this.qq);
         });
         this.quiz = new Quiz(candidate.level, candidate.techno, this.quizQuestions, false, false, 0);
@@ -112,7 +112,7 @@ export class NumberQuestionQuizComponent implements OnInit {
             this.quizQsts = this.getRandomValues(this.questions, this.totalQ);
             console.log(this.quizQsts);
             this.quizQsts.forEach(element => {
-              this.qq = new QuizQuestion(element, this.answers);
+              this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,element.proposedResponses, this.answers);
               this.quizQuestions.push(this.qq);
             });
             this.quiz = new Quiz(element.level, element.techno, this.quizQuestions, false, false, 0);

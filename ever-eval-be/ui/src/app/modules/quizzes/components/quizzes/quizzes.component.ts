@@ -50,7 +50,7 @@ export class QuizzesComponent implements OnInit {
     this.selectedQuiz = quiz; 
     this.index=0;
     console.log('selectedQuiz', this.selectedQuiz);
-    this.time=this.selectedQuiz.quizQuestions[0].question.countdown;
+    this.time=this.selectedQuiz.quizQuestions[0].countdown;
     console.log('this');
     console.log(this);
   }

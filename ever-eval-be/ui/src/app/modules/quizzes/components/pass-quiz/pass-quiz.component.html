@@ -36,17 +36,17 @@
                             </thead>
                             <tbody>
                                 <td>
-                                    <h2>{{selectedQuiz.quizQuestions[index].question.content}}.
+                                    <h2>{{selectedQuiz.quizQuestions[index].content}}.
                                     </h2>
                                     <div class="hr-line-dashed"></div>
                                     <div class="text-dark" style="margin-left: 10%;margin-right: 40%;">
                                         <table class="table table-striped">
                                             <tr>
                                                 <td class="text-dark"
-                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='CHECKBOX'">
+                                                    *ngIf="selectedQuiz.quizQuestions[index].type==='CHECKBOX'">
                                                     <div class="form-group">
                                                         <div class="text-dark"
-                                                            *ngFor="let pr of selectedQuiz.quizQuestions[index].question.proposedResponses">
+                                                            *ngFor="let pr of selectedQuiz.quizQuestions[index].proposedResponses">
                                                             <input type="checkbox" name="content"
                                                                 [(ngModel)]="pr.checked"
                                                                 (change)="checkboxChangeHandler(pr.checked,pr.content)">{{pr.content}}
@@ -54,9 +54,9 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-dark"
-                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='RADIO'">
+                                                    *ngIf="selectedQuiz.quizQuestions[index].type==='RADIO'">
                                                     <div class="form-group"
-                                                        *ngFor="let pr of selectedQuiz.quizQuestions[index].question.proposedResponses; let i=index">
+                                                        *ngFor="let pr of selectedQuiz.quizQuestions[index].proposedResponses; let i=index">
                                                         <input type="radio" (change)="radioChangeHandler(pr.content)"
                                                             name="proposedResponses[{{i}}].content" [value]="pr.content"
                                                             [(ngModel)]="answer.content">{{pr.content}}
@@ -64,7 +64,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-dark"
-                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='TEXTFIELD'">
+                                                    *ngIf="selectedQuiz.quizQuestions[index].type==='TEXTFIELD'">
                                                     <div class="form-group">
                                                         <input type="text" placeholder="Content"
                                                             name="quizQuestions[{{index}}].answers[0].content"
@@ -73,7 +73,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="form-group"
-                                                    *ngIf="selectedQuiz.quizQuestions[index].question.type==='TEXTAREA'">
+                                                    *ngIf="selectedQuiz.quizQuestions[index].type==='TEXTAREA'">
                                                     <div class="form-group"><textarea type="text" placeholder="Content"
                                                             [(ngModel)]="answer.content"
                                                             name="quizQuestions[{{index}}].answers[0].content"

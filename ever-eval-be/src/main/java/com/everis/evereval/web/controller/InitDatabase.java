@@ -44,23 +44,22 @@ public class InitDatabase {
 
 	@Autowired
 	private EmailService emailService;
-	
+
 	@Autowired
 	private StaffRepository staffRepo;
 
 	@GetMapping(path = "initdb")
 	public String initDB() {
-		
-		Staff st=new Staff();
+
+		Staff st = new Staff();
 		st.setFirstName("admin");
 		st.setLastName("admin");
-		st.setMail("admin");
+		st.setMail("chaimaa.elhaddad@everis.com");
 		st.setPassword(bcryptEncoder.encode("admin"));
 		st.setRole(Role.ADMIN);
-		//st.setPicture("https://yinnepal.files.wordpress.com/2017/11/admin.png?w=640");
+		// st.setPicture("https://yinnepal.files.wordpress.com/2017/11/admin.png?w=640");
 		staffRepo.save(st);
-		
-		
+
 		// Email
 		EmailDTO emaildto = new EmailDTO();
 		emaildto.setSubject("Convocation to everis");
@@ -84,10 +83,10 @@ public class InitDatabase {
 		staff.setRole(Role.HR);
 
 		staff.setPassword(bcryptEncoder.encode("chaimaa"));
-		//staff.setPicture("https://cdn.dribbble.com/users/541780/screenshots/2515468/tiendas-hr-dribbble.gif");
+		// staff.setPicture("https://cdn.dribbble.com/users/541780/screenshots/2515468/tiendas-hr-dribbble.gif");
 
-		//staff.setPassword("chaimaa");
-		//staff.setPicture("https://cdn.dribbble.com/users/541780/screenshots/2515468/tiendas-hr-dribbble.gif");
+		// staff.setPassword("chaimaa");
+		// staff.setPicture("https://cdn.dribbble.com/users/541780/screenshots/2515468/tiendas-hr-dribbble.gif");
 
 		staff.setQuizes(Arrays.asList());
 
@@ -97,11 +96,11 @@ public class InitDatabase {
 		staff1.setMail("evereval.everis@gmail.com");
 		staff1.setRole(Role.EVALUATOR);
 		staff1.setPassword(bcryptEncoder.encode("evereval"));
-		//staff1.setPicture(
-				//"http://www.agoraentreprise.com/wp-content/uploads/2014/07/evaluation-dentreprise-300x219-180x120.jpg");
+		// staff1.setPicture(
+		// "http://www.agoraentreprise.com/wp-content/uploads/2014/07/evaluation-dentreprise-300x219-180x120.jpg");
 
-		//staff1.setPassword("evereval");
-		//staff1.setPicture("http://www.agoraentreprise.com/wp-content/uploads/2014/07/evaluation-dentreprise-300x219-180x120.jpg");
+		// staff1.setPassword("evereval");
+		// staff1.setPicture("http://www.agoraentreprise.com/wp-content/uploads/2014/07/evaluation-dentreprise-300x219-180x120.jpg");
 
 		staff1.setQuizes(Arrays.asList());
 
@@ -252,17 +251,44 @@ public class InitDatabase {
 		// ---Test QuizQuestion
 
 		QuizQuestionDTO qq = new QuizQuestionDTO();
-		qq.setQuestion(questionService.findById(1l).get());
+		qq.setContent("who are you?");
+		qq.setLevel(Level.CLD);
+		qq.setTechno(Techno.JAVAEE);
+		qq.setType(Type.CHECKBOX);
+		qq.getProposedResponses().add(pr);
+		qq.getProposedResponses().add(pr2);
+		qq.getProposedResponses().add(pr3);
+		qq.setCountdown(10);
+		qq.setScore(20);
 		qq.getAnswers().add(answer1);
 		qq.getAnswers().add(answer2);
 		QuizQuestionDTO qq2 = new QuizQuestionDTO();
-		qq2.setQuestion(questionService.findById(2l).get());
+		qq2.setContent("where are you from?");
+		qq2.setLevel(Level.CLD);
+		qq2.setTechno(Techno.JAVAEE);
+		qq2.setType(Type.RADIO);
+		qq2.getProposedResponses().add(pr3);
+		qq2.getProposedResponses().add(pr4);
+		qq2.setCountdown(5);
+		qq2.setScore(15);
 		qq2.getAnswers().add(answer3);
 		QuizQuestionDTO qq3 = new QuizQuestionDTO();
-		qq3.setQuestion(questionService.findById(6l).get());
+		qq3.setContent("q1");
+		qq3.setLevel(Level.CLD);
+		qq3.setTechno(Techno.JAVAEE);
+		qq3.setType(Type.RADIO);
+		qq3.getProposedResponses().add(pr3);
+		qq3.getProposedResponses().add(pr4);
+		qq3.setCountdown(15);
+		qq3.setScore(15);
 		qq3.getAnswers().add(answer5);
 		QuizQuestionDTO qq4 = new QuizQuestionDTO();
-		qq4.setQuestion(questionService.findById(4l).get());
+		qq4.setContent("q2");
+		qq4.setLevel(Level.CLD);
+		qq4.setTechno(Techno.JAVAEE);
+		qq4.setType(Type.TEXTAREA);
+		qq4.setCountdown(20);
+		qq4.setScore(20);
 		qq4.getAnswers().add(answer4);
 
 		// ---Test Answers

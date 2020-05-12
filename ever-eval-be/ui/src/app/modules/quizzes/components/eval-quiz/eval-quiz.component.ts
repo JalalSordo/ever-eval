@@ -83,11 +83,11 @@ export class EvalQuizComponent implements OnInit {
 
 		// this.selectedQuizEval.quizQuestions.forEach((element) => {
 			
-		// 	this.totalQuiz=+this.totalQuiz+ +element.question.score;
+		// 	this.totalQuiz=+this.totalQuiz+ +element.score;
 			
-		// 	console.log('element.question.score', element)
+		// 	console.log('element.score', element)
 			
-		// 	if (element.question.type === 'CHECKBOX' || element.question.type === 'RADIO') {
+		// 	if (element.type === 'CHECKBOX' || element.type === 'RADIO') {
 				
 		// 		element.question.proposedResponses.forEach(pr => {
 					

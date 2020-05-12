@@ -46,7 +46,13 @@ export class ProposedResponse {
 }
 export class QuizQuestion {
     constructor(
-        public question: Question,
+        public content: string,
+        public level: Level,
+        public techno: Techno,
+        public type: Type,
+        public countdown: number,
+        public score:number,
+        public proposedResponses: Array<ProposedResponse>,
         public answers: Array<Answer>
     ) { }
 }

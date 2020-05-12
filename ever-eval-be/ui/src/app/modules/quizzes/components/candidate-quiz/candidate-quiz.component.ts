@@ -37,7 +37,7 @@ export class CandidateQuizComponent implements OnInit {
     this.http.post<any>('/getCandidateByToken?token='+this.token,"").subscribe(data => {
       if(!data)
       {
-        console.log("this is fedback data");
+        console.log("this is feedback data");
         console.log(data);
        if(data == null)
         this.router.navigate(['/home']);
@@ -77,7 +77,7 @@ export class CandidateQuizComponent implements OnInit {
   this.selectedQuiz = this.quiz; 
   this.index=0;
   console.log('selectedQuiz', this.selectedQuiz);
-  this.time=this.selectedQuiz.quizQuestions[0].question.countdown;
+  this.time=this.selectedQuiz.quizQuestions[0].countdown;
   console.log('this');
   console.log(this);
 }
