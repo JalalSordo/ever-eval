@@ -134,11 +134,11 @@ export class EvalQuizComponent implements OnInit {
 			
 			// console.log(this.scoreTotalQuiz);
 
-			// this.evaluated.emit("true");
-
 			console.log('Answers resubmited and eveluated');
 		});
 		
+		this.evaluated.emit("true");
+		this.selectedQuizEval.evaluated=true;
 		document.getElementById('eval').click();
 		this.addSwal.show();
 	}
