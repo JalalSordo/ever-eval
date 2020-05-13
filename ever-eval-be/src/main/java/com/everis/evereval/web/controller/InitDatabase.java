@@ -150,7 +150,7 @@ public class InitDatabase {
 		q2.setScore(15);
 		questionService.save(q);
 		QuestionDTO q3 = new QuestionDTO();
-		q3.setContent("q1");
+		q3.setContent("question1");
 		q3.setLevel(Level.CLD);
 		q3.setTechno(Techno.JAVAEE);
 		q3.setType(Type.RADIO);
@@ -160,7 +160,7 @@ public class InitDatabase {
 		q3.setScore(15);
 		questionService.save(q3);
 		QuestionDTO q4 = new QuestionDTO();
-		q4.setContent("q2");
+		q4.setContent("question2");
 		q4.setLevel(Level.CLD);
 		q4.setTechno(Techno.JAVAEE);
 		q4.setType(Type.TEXTAREA);
@@ -168,7 +168,7 @@ public class InitDatabase {
 		q4.setScore(20);
 		questionService.save(q4);
 		QuestionDTO q5 = new QuestionDTO();
-		q5.setContent("q3");
+		q5.setContent("question3");
 		q5.setLevel(Level.CLD);
 		q5.setTechno(Techno.JAVAEE);
 		q5.setType(Type.TEXTFIELD);
@@ -176,7 +176,7 @@ public class InitDatabase {
 		q5.setScore(20);
 		questionService.save(q5);
 		QuestionDTO q6 = new QuestionDTO();
-		q6.setContent("q4");
+		q6.setContent("question4");
 		q6.setLevel(Level.CLD);
 		q6.setTechno(Techno.JAVAEE);
 		q6.setType(Type.RADIO);
@@ -186,7 +186,7 @@ public class InitDatabase {
 		q6.setScore(15);
 		questionService.save(q6);
 		QuestionDTO q7 = new QuestionDTO();
-		q7.setContent("q5?");
+		q7.setContent("question5?");
 		q7.setLevel(Level.CLD);
 		q7.setTechno(Techno.JAVAEE);
 		q7.setType(Type.TEXTAREA);
@@ -194,7 +194,7 @@ public class InitDatabase {
 		q7.setScore(25);
 		questionService.save(q7);
 		QuestionDTO q8 = new QuestionDTO();
-		q8.setContent("q6");
+		q8.setContent("question6");
 		q8.setLevel(Level.CLD);
 		q8.setTechno(Techno.JAVAEE);
 		q8.setType(Type.RADIO);
@@ -204,7 +204,7 @@ public class InitDatabase {
 		q8.setScore(15);
 		questionService.save(q8);
 		QuestionDTO q9 = new QuestionDTO();
-		q9.setContent("q7");
+		q9.setContent("question7");
 		q9.setLevel(Level.CLD);
 		q9.setTechno(Techno.JAVAEE);
 		q9.setType(Type.RADIO);
@@ -214,7 +214,7 @@ public class InitDatabase {
 		q9.setScore(15);
 		questionService.save(q9);
 		QuestionDTO q10 = new QuestionDTO();
-		q10.setContent("q8");
+		q10.setContent("question8");
 		q10.setLevel(Level.CLD);
 		q10.setTechno(Techno.JAVAEE);
 		q10.setType(Type.RADIO);
@@ -224,7 +224,7 @@ public class InitDatabase {
 		q10.setScore(15);
 		questionService.save(q10);
 		QuestionDTO q11 = new QuestionDTO();
-		q11.setContent("q9");
+		q11.setContent("question9");
 		q11.setLevel(Level.CLD);
 		q11.setTechno(Techno.JAVAEE);
 		q11.setType(Type.RADIO);
@@ -273,7 +273,7 @@ public class InitDatabase {
 		qq2.setScore(15);
 		qq2.getAnswers().add(answer3);
 		QuizQuestionDTO qq3 = new QuizQuestionDTO();
-		qq3.setContent("q1");
+		qq3.setContent("question1");
 		qq3.setLevel(Level.CLD);
 		qq3.setTechno(Techno.JAVAEE);
 		qq3.setType(Type.RADIO);
@@ -283,7 +283,7 @@ public class InitDatabase {
 		qq3.setScore(15);
 		qq3.getAnswers().add(answer5);
 		QuizQuestionDTO qq4 = new QuizQuestionDTO();
-		qq4.setContent("q2");
+		qq4.setContent("question2");
 		qq4.setLevel(Level.CLD);
 		qq4.setTechno(Techno.JAVAEE);
 		qq4.setType(Type.TEXTAREA);
