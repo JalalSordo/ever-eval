@@ -74,8 +74,12 @@ export class NumberQuestionQuizComponent implements OnInit {
         this.quizQsts = this.getRandomValues(this.questions, this.totalQ);
         console.log(this.quizQsts);
         this.quizQsts.forEach(element => {
-          this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,element.proposedResponses,this.answers);
+          element.proposedResponses.forEach(proposedResponse =>{
+          	this.proposedResponses.push(new ProposedResponse(proposedResponse.content,proposedResponse.state,proposedResponse.score,proposedResponse.checked));
+          });
+          this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,this.proposedResponses,this.answers);
           this.quizQuestions.push(this.qq);
+          this.proposedResponses = [];
         });
         this.quiz = new Quiz(candidate.level, candidate.techno, this.quizQuestions, false, false, 0);
         this.quiz.totalQuestion = this.totalQ;
@@ -112,8 +116,12 @@ export class NumberQuestionQuizComponent implements OnInit {
             this.quizQsts = this.getRandomValues(this.questions, this.totalQ);
             console.log(this.quizQsts);
             this.quizQsts.forEach(element => {
-              this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,element.proposedResponses, this.answers);
+              element.proposedResponses.forEach(proposedResponse =>{
+          		this.proposedResponses.push(new ProposedResponse(proposedResponse.content,proposedResponse.state,proposedResponse.score,proposedResponse.checked));
+          	  });
+              this.qq = new QuizQuestion(element.content,element.level,element.techno, element.type, element.countdown,element.score,this.proposedResponses,this.answers);
               this.quizQuestions.push(this.qq);
+              this.proposedResponses = [];
             });
             this.quiz = new Quiz(element.level, element.techno, this.quizQuestions, false, false, 0);
             this.quiz.totalQuestion = this.totalQ;
