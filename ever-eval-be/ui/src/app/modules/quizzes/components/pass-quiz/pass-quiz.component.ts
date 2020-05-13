@@ -39,6 +39,9 @@ export class PassQuizComponent implements OnInit {
   tick = 1000;
   //time: number = 5;
   quizIndex: number;
+  quizSwalDone=false;
+  
+  
   constructor(private quizService: QuizService, private cdref: ChangeDetectorRef) { }
 
 
@@ -89,8 +92,10 @@ export class PassQuizComponent implements OnInit {
         this.done.emit("true");
         this.selectedQuiz.done = true;
         document.getElementById('cheatQuiz').click();
-        this.quizSwal.show();
-        
+        if(!this.quizSwalDone){
+      		this.quizSwal.show();
+        	this.quizSwalDone = true;
+      	}
       });
       
     }
@@ -117,14 +122,20 @@ export class PassQuizComponent implements OnInit {
       }
       this.submit();
       if (this.index === this.selectedQuiz.quizQuestions.length) {
+      	this.done.emit("true");
+        this.selectedQuiz.done = true;
       	document.getElementById('cheatQuiz').click();
-        this.quizSwal.show();
+      	if(!this.quizSwalDone){
+      		this.quizSwal.show();
+        	this.quizSwalDone = true;
+      	}
       }
     }
     else {
       if (this.index >= this.quizIndex) {
       	document.getElementById('cheatQuiz').click();
-        this.quizSwal.show();
+      	this.done.emit("true");
+        this.selectedQuiz.done = true;
       } 
 
     }
@@ -145,10 +156,13 @@ export class PassQuizComponent implements OnInit {
     this.index = this.selectedQuiz.quizQuestions.length;
     this.counter = 0;
     if (this.index >= this.selectedQuiz.quizQuestions.length) {
-      this.quizService.postQuizAnswers(this.selectedQuiz).subscribe(res => {
-        this.done.emit("true");
-        this.selectedQuiz.done = true;
-      });
+      this.selectedQuiz.done = true;
+      this.done.emit("true");
+      if(!this.quizSwalDone){
+      	this.quizSwal.show();
+        this.quizSwalDone = true;
+      }
+      
     }
 
   }
