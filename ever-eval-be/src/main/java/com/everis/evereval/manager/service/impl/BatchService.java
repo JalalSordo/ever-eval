@@ -49,7 +49,7 @@ public class BatchService {
 		String content = "Hi, \n \n some quizzes in EverEval are done and they  must be evaluated.";
 
 		System.out.println("//////////////////");
-
+		int cpt  = 0;
 		for (Quiz quiz : quize) {
 
 			candidate = candidateService.findByQuiz(quiz);
@@ -59,15 +59,19 @@ public class BatchService {
 					+ "\n Number of questions: " + quiz.getTotalQuestion();
 
 			content += emailBody;
+			cpt++;
 		}
 		
 		content += "\n\n Kind regards,\n EverEval.";
-		
-		for (Staff staff : evaluators) {
+		if(cpt>0)
+		{
+			for (Staff staff : evaluators) {
 
-			mailConfig.sendEmail(staff.getMail(), subject, content);
-			System.out.println("email sent Seccesfully");
+				mailConfig.sendEmail(staff.getMail(), subject, content);
+				System.out.println("email sent Seccesfully");
+			}
 		}
+		
 		
 		System.out.println("//////////////////");
 
