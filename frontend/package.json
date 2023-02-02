@@ -33,7 +33,7 @@
     "datatables.net-buttons-dt": "^1.5.6",
     "datatables.net-dt": "^1.10.19",
     "jquery": "^3.4.1",
-    "jszip": "^3.2.2",
+    "jszip": "^3.8.0",
     "jw-angular-pagination": "^1.1.0",
     "jw-paginate": "^1.0.4",
     "ngx-bootstrap": "^5.1.2",
